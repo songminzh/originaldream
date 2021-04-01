@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIControl (Extension)
 
 /// 时间间隔
-@property (nonatomic, assign) NSTimeInterval cs_eventInterval;
+@property (nonatomic, assign) NSTimeInterval sw_eventInterval;
 
 @end
 

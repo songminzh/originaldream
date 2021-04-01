@@ -12,6 +12,13 @@
 static const char * kCSEventIntervalKey = "CSEventIntervalKey";
 static const char * kCSEventInvalidKey  = "CSEventInvalidKey";
 
+@interface UIControl (Extension)
+
+/// 按钮点击事件是否失效
+@property (nonatomic, assign) BOOL cs_eventInvalid;
+
+@end
+
 @implementation UIControl (Extension)
 
 + (void)load {

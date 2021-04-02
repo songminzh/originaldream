@@ -365,8 +365,6 @@ void fooMethod(id obj, SEL _cmd) {
 
 实现一个备用接收者的例子如下：
 
-
-
 ```objectivec
 #import "ViewController.h"
 #import "objc/runtime.h"
@@ -422,8 +420,6 @@ void fooMethod(id obj, SEL _cmd) {
 首先它会发送`-methodSignatureForSelector:`消息获得函数的参数和返回值类型。如果`-methodSignatureForSelector:`返回`nil` ，`Runtime`则会发出 `-doesNotRecognizeSelector:` 消息，程序这时也就挂掉了。如果返回了一个函数签名，`Runtime`就会创建一个`NSInvocation` 对象并发送 `-forwardInvocation:`消息给目标对象。
 
 实现一个完整转发的例子如下：
-
-
 
 ```objectivec
 #import "ViewController.h"
@@ -509,8 +505,6 @@ void fooMethod(id obj, SEL _cmd) {
 
 关联对象Runtime提供了下面几个接口：
 
-
-
 ```objectivec
 //关联对象
 void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
@@ -522,8 +516,6 @@ void objc_removeAssociatedObjects(id object)
 
 参数解释
 
-
-
 ```csharp
 id object：被关联的对象
 const void *key：关联的key，要求唯一
@@ -532,8 +524,6 @@ objc_AssociationPolicy policy：内存管理的策略
 ```
 
 内存管理的策略
-
-
 
 ```php
 typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) {
@@ -550,8 +540,6 @@ typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) {
 ```
 
 下面实现一个`UIView`的`Category`添加自定义属性`defaultColor`。
-
-
 
 ```objectivec
 #import "ViewController.h"
@@ -619,8 +607,6 @@ static char kDefaultColorKey;
 
 实际上添加方法刚才在讲消息转发的时候，动态方法解析的时候就提到了。
 
-
-
 ```kotlin
 //class_addMethod(Class  _Nullable __unsafe_unretained cls, SEL  _Nonnull name, IMP  _Nonnull imp, const char * _Nullable types)
 class_addMethod([self class], sel, (IMP)fooMethod, "v@:");
@@ -637,7 +623,7 @@ class_addMethod([self class], sel, (IMP)fooMethod, "v@:");
 
 
 
-```kotlin
+```objective-c
 @implementation ViewController
 
 + (void)load {
@@ -697,8 +683,6 @@ class_addMethod([self class], sel, (IMP)fooMethod, "v@:");
 
 - NSKVONotifying_A 类剖析
 
-
-
 ```objectivec
 NSLog(@"self->isa:%@",self->isa);  
 NSLog(@"self class:%@",[self class]);  
@@ -706,16 +690,12 @@ NSLog(@"self class:%@",[self class]);
 
 在建立KVO监听前，打印结果为：
 
-
-
 ```ruby
 self->isa:A
 self class:A
 ```
 
 在建立KVO监听之后，打印结果为：
-
-
 
 ```objectivec
 self->isa:NSKVONotifying_A
@@ -732,8 +712,6 @@ self class:A
 当改变发生后， `didChangeValueForKey:` 被调用，通知系统该`keyPath` 的属性值已经变更；之后， `observeValueForKey:ofObject:change:context:`也会被调用。且重写观察属性的`setter` 方法这种继承方式的注入是在运行时而不是编译时实现的。
 
 `KVO` 为子类的观察者属性重写调用存取方法的工作原理在代码中相当于：
-
-
 
 ```objectivec
 - (void)setName:(NSString *)newName { 
@@ -783,8 +761,6 @@ self class:A
 
 原理描述：用`runtime`提供的函数遍历`Model`自身所有属性，如果属性在`json`中有对应的值，则将其赋值。
 核心方法：在`NSObject`的分类中添加方法
-
-
 
 ```objectivec
 - (instancetype)initWithDict:(NSDictionary *)dict {

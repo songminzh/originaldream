@@ -1,3 +1,5 @@
+[TOC]
+
 # performSelector
 
 ## performSelector和直接调用方法的区别

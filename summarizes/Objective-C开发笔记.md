@@ -33,25 +33,24 @@
 ### ARC基本原理
 
 ARC是Automatic Reference Counting(自动引用计数器)的简称。
+
 ARC的规则就是只要对象没有强指针引用，就会被释放掉。换而言之，只要还有一个强引用指针变量指向对象，那么这个对象就会存在内存中。弱指针指向的对象，会被自动变成空指针（nil指针），从而不会引发野指针错误。
 
-GPUstep将引用计数保存在对象内存头部的变量中；（简单高效，代码少）
-苹果用的散列表（引用计数表）管理引用计数；（分配内存无需考虑头部引用变量；表可以追溯到对象的内存块）
-计数表更便于调试（可以追溯），同时可以方便检测持有者是否存在；
-autorelease：NSAutoreleasePool在废弃(drain)时，会自动调用在期间调用autorelease对象的release方法。
-如果pool是嵌套生成，那么最内侧为使 用时的pool对象。
-
-> for 循环持有多个对象时，可以使用。
-> 常用场景：多个图片的拼接成视频。
-
-如果对NSAutoreleasePool进行autorelease：异常。
-ARC是**编译器特性**，而不是运行时特性，更不是垃圾回收器(GC)；核心就是编译时插入相应的retian release。
+ARC是**编译器特性**，而不是运行时特性，更不是垃圾回收器(GC)，核心就是编译时插入相应的retian release。
 
 - **strong 修饰符**：对象的默认修饰符，强引用表示，变量在超出作用域时会调用release方法。
 - **weak 修饰符**：弱引用的表示，不持有对象实例；弱引用在对象被释放的时候，会自动重置为nil；
 - **unsafe_unretained 修饰符**：弱引用的表示，不持有对象实例；对象在被释放的时候，不会重置为nil；当对象释放后，再调用有极大的可能性崩溃；
 - **autoreleasing 修饰符**：将NSObject 类对象注册到autoreleasepool 中；
 
-> 遇到占用内存越来越多情况时，可以检查一些自己是否存在循环引用导致的内存泄露。
-> 上架前使用Instruments调试是好习惯，循环引用也可以被检测出来。
-> 额外的文章：[ARC下的循环引用](https://link.jianshu.com/?t=http://ios.jobbole.com/82077/)
+生成并持有对象：alloc、new、copy、mutableCopy 
+持有对象：retain方法 
+释放对象：release方法 
+废弃对象：dealloc方法 
+
+### 总结
+
+1. 在OC的对象中存有引用计数器这一整数值。
+2. 调用alloc或者retain方法后，引用计数器加1。
+3. 调用release后，引用计数器减1。
+4. 当引用计数器值为0时，调用dealloc方法销毁对象。

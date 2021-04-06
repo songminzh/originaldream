@@ -762,7 +762,7 @@ self class:A
 原理描述：用`runtime`提供的函数遍历`Model`自身所有属性，如果属性在`json`中有对应的值，则将其赋值。
 核心方法：在`NSObject`的分类中添加方法
 
-```objectivec
+```objective-c
 - (instancetype)initWithDict:(NSDictionary *)dict {
 
     if (self = [self init]) {

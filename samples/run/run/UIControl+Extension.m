@@ -42,6 +42,11 @@ static const char * kSWEventInvalidKey  = "EventInvalidKey";
 }
 
 - (void)sw_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {
+    
+    /*
+     源程序（.c\.m ...）--> 编译器(Clang\LLVM ...) --> 目标程序（.o文件）
+     
+     */
     if (!self.sw_eventInvalid) {
         self.sw_eventInvalid = YES;
         [self sw_sendAction:action to:target forEvent:event];

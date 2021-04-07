@@ -3,8 +3,6 @@
 #import <objc/message.h>
 #import "UILabel+defaultText.h"
 #import "UIControl+Extension.h"
-#import <AppTrackingTransparency/AppTrackingTransparency.h>
-#import <AdSupport/AdSupport.h>
 
 @interface ViewController ()
 
@@ -91,25 +89,6 @@
     
     [self swViewDidLoad];
     NSLog(@"替换的viewDidLoad方法");
-}
-
-
-/// 获取IDFA
-- (NSString *)getIDFA {
-    __block NSString *idfaString = @"";
-    if (@available(iOS 14, *)) {
-        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-            if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
-                 idfaString = [[ASIdentifierManager sharedManager] advertisingIdentifier].UUIDString;
-            }
-        }];
-    } else {
-        if ([ASIdentifierManager sharedManager].advertisingTrackingEnabled) {
-            idfaString = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-        }
-    }
-    
-    return idfaString;
 }
 
 @end

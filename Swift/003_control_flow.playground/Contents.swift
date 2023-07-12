@@ -1,7 +1,38 @@
 import UIKit
 
 // if else
+// guard
+// 用于提前退出函数、方法或循环
+// 在 guard 语句的 else 分支中必须使用 return、throw、break 或者类似的语句来提前退出函数、方法或循环，而不是继续执行后续的代码。
 
+func dosome() {
+    var b: String? = nil
+    guard let a = b else {
+        return
+    }
+    
+    print("a = \(a)")
+}
+
+dosome()
+
+func processUser(age: Int?) {
+    guard let userAge = age else {
+        print("未提供年龄信息")
+        return
+    }
+    
+    guard userAge >= 18 else {
+        print("用户未成年，无法完成操作")
+        return
+    }
+    
+    print("用户年龄符合要求，可以进行下一步操作")
+    // do next step
+}
+
+processUser(age: 17)
+    
 // switch case
 var code = 404
 switch code

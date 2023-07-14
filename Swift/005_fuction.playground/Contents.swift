@@ -28,7 +28,7 @@ func add(a: Int, b: Int) -> Int {
     return a + b
 }
 
-// 多重返回值
+// 多重返回值（元组）
 func minMax(array: [Int]) -> (min: Int, max: Int) {
     var currentMin = array[0]
     var currentMax = array[0]
@@ -112,13 +112,15 @@ print("number 1: \(num_1), number 2: \(num_2)")
 
 /// 类型
 
-// 函数类型声明
+// 函数类型声明，是Swift中将函数类型定义为一种特定的类型，以便可以将函数作为参数
+
+typealias opera = (Int, Int) -> Int
+var a = (Int, String) -> Void
+
 func multiply(a: Int, b: Int) -> Int {
     return a * b
 }
 
-// 函数类型声明，是Swift 中将函数类型定义为一种特定的类型，以便可以将函数作为参数
-typealias opera = (Int, Int) -> Int
 func applyOpration(a: Int, b: Int, operation: opera) -> Int {
     return operation(a, b)
 }

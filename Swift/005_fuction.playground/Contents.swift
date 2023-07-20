@@ -115,7 +115,7 @@ print("number 1: \(num_1), number 2: \(num_2)")
 // 函数类型声明，是Swift中将函数类型定义为一种特定的类型，以便可以将函数作为参数
 
 typealias opera = (Int, Int) -> Int
-var a = (Int, String) -> Void
+var af : ((Int, String) -> Void)
 
 func multiply(a: Int, b: Int) -> Int {
     return a * b

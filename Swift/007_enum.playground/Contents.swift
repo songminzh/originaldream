@@ -45,3 +45,49 @@ enum Color: String {
 
 let color = Color.red
 
+enum Shape {
+    case circle(radius: Double)
+    case square(side: Double)
+    case rectangle(width: Double, height: Double)
+}
+
+let shape = Shape.circle(radius: 10)
+
+switch shape {
+case .circle(let radius):
+    print("The circle's radius is \(radius)")
+case .square(let side):
+    print("The square's side is \(side)")
+case .rectangle(let width, let height):
+    print("The rectangle's width is \(width) and height is \(height)")
+}
+
+// 递归枚举 算术表达式
+enum ArithmeticExpression {
+    case number(Int)
+    indirect case addition(ArithmeticExpression, ArithmeticExpression)
+    indirect case multiplication(ArithmeticExpression, ArithmeticExpression)
+}
+
+func evaluate(_ expression: ArithmeticExpression) -> Int {
+    switch expression {
+    case .number(let value):
+        return value
+    case .addition(let a, let b):
+        return evaluate(a) + evaluate(b)
+    case .multiplication(let a, let b):
+        return evaluate(a) * evaluate(b)
+    }
+}
+
+let expression = ArithmeticExpression.addition(
+    .number(2),
+    .multiplication(
+        .number(3),
+        .number(4)
+    )
+)
+
+print(evaluate(expression))
+
+

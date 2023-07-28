@@ -1,6 +1,8 @@
 import UIKit
 
-// 枚举
+/// 枚举
+
+/// 定义与用法
 enum testEnum: Int {
     case A = 1
     case B = 2
@@ -62,7 +64,7 @@ case .rectangle(let width, let height):
     print("The rectangle's width is \(width) and height is \(height)")
 }
 
-// 递归枚举 算术表达式
+/// 递归枚举 算术表达式
 enum ArithmeticExpression {
     case number(Int)
     indirect case addition(ArithmeticExpression, ArithmeticExpression)
@@ -90,7 +92,7 @@ let expression = ArithmeticExpression.addition(
 
 print(evaluate(expression))
 
-// 练习
+/// 练习
 enum ShapeDimensions {
     // 点 没有关联值，它没有尺寸
     case point

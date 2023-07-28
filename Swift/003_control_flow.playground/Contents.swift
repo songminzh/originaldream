@@ -1,9 +1,12 @@
 import UIKit
 
-// if else
-// guard
-// 用于提前退出函数、方法或循环
-// 在 guard 语句的 else 分支中必须使用 return、throw、break 或者类似的语句来提前退出函数、方法或循环，而不是继续执行后续的代码。
+/// 控制流
+
+/// guard
+/**
+ 用于提前退出函数、方法或循环
+ 在 guard 语句的 else 分支中必须使用 return、throw、break 或者类似的语句来提前退出函数、方法或循环，而不是继续执行后续的代码。
+ */
 
 func dosome() {
     var b: String? = nil
@@ -33,7 +36,7 @@ func processUser(age: Int?) {
 
 processUser(age: 17)
     
-// switch case
+/// switch case
 var code = 404
 switch code
 {
@@ -62,7 +65,12 @@ default:
     print("Unknown error")
 }
 
-// fallthrough 关键字不会检查它下一个将会落入执行的 case 中的匹配条件。fallthrough 简单地使代码继续连接到下一个 case 中的代码。
+/// fallthrough
+/**
+ 关键字不会检查它下一个将会落入执行的 case 中的匹配条件。
+ fallthrough简单地使代码继续连接到下一个 case 中的代码。
+ */
+
 // continue 跳过本次循环，进入下一次循环
 for index in (0...10)
 {
@@ -83,7 +91,7 @@ for index in (0...10)
     print(index)
 }
 
-// while
+/// while
 var a = 0
 var flag = true
 while (flag) {
@@ -96,7 +104,8 @@ while (flag) {
 }
 
 flag = true
-// repeat while
+
+/// repeat while
 repeat {
     print("repeat-while-\(a)")
     

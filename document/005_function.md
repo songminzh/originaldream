@@ -1,9 +1,8 @@
-import UIKit
+# 函数
 
-/// 函数
+## 定义
 
-/// 定义
-
+```swift
 // 无参无返回值
 func donothing() {}
 
@@ -12,7 +11,7 @@ func greet(name: String) {
     print(name)
 }
 
-/// 指定参数标签
+// 指定参数标签
 func greet1(outName name: String) {
     print(name)
 }
@@ -66,7 +65,7 @@ if let bounds = getMinMax(array: [8, -6, 2, 109, 3, 71]) {
 let mm: (min: Int, max: Int) = minMax(array: [2, 3, 5, 9, 11, 10, 6])
 print("min: \(mm.min), max: \(mm.max)")
 
-/// 隐式返回的函数
+// 隐式返回的函数
 // 如果一个函数的整个函数体是一个单行表达式，这个函数可以隐式地返回这个表达式。
 func greeting(for person: String) -> String {
     "Hello" + person + "!"
@@ -76,9 +75,11 @@ donothing()
 greet(name: "Alex")
 greet2("Alex")
 add(a: 1, b: 2)
+```
 
-/// 函数参数
+## 函数参数
 
+```swift
 // 默认参数
 func sayHello(name: String = "Swift") {
     print("Hello \(name)")
@@ -108,11 +109,12 @@ var num_2 = 6
 print("number 1: \(num_1), number 2: \(num_2)")
 swap2Ints(&num_1, &num_2)
 print("number 1: \(num_1), number 2: \(num_2)")
+```
 
-/// 类型
+## 函数类型
 
-// 函数类型声明，是Swift中将函数类型定义为一种特定的类型，以便可以将函数作为参数
-
+函数类型声明，是Swift中将函数类型定义为一种特定的类型，以便可以将函数作为参数。
+```swift
 typealias opera = (Int, Int) -> Int
 var af : ((Int, String) -> Void)
 
@@ -127,3 +129,4 @@ func applyOpration(a: Int, b: Int, operation: opera) -> Int {
 
 applyOpration(a: 1, b: 2, operation: add)
 applyOpration(a: 1, b: 2, operation: multiply)
+```

@@ -97,6 +97,7 @@ func dataHandler() async {
     print(data)
 }
 
-Task {
+Task.init {
     await dataHandler() // 启动异步任务
 }
+
